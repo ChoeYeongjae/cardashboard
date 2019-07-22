@@ -24,8 +24,28 @@ public class main {
 	    public String login() throws Exception{
 	        return "login";
 	    }
+	    @RequestMapping("/admin")
+	    public String admin() throws Exception{
+	        return "admin";
+	    }
 	    @RequestMapping("/chart")
 	    public String chart() throws Exception{
 	        return "chart";
+	    }
+	    @RequestMapping("/carinfo")
+	    public String carinfo() throws Exception{
+	        return "carinfo";
+	    }
+	    @RequestMapping("/loginfali")
+	    public String loginfali() throws Exception{
+	        return "loginfali";
+	    }
+	    @RequestMapping("/member")
+	    public String member() throws Exception{
+	        return "member";
+	    }
+	    @RequestMapping("/carmember")
+	    public String carmember() throws Exception{
+	        return "carmember";
 	    }
 }
