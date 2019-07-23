@@ -19,16 +19,17 @@
     margin-left: 54%;
     border-radius: 8px;
     background: #fff;
-    margin-top: 10%;
+    margin-top: 12%;
     position: absolute;
   }
   .left {
   	color: #fff;
   	position: absolute;
-    top: 18%;
+    top: 21%;
     left: 24%;
   }
   form .submit {
+  	border: none;
   	display: inline-block;
     width: 201px;
     border-radius: 4px;
@@ -45,11 +46,13 @@
   	width: 90%;
   	margin-top: 5px;
   	padding: 0px 18px;
+  	height: 24px;
   }
   .fa{
   	position: absolute !important;
     color: slategrey;
     margin: 6px;
+    margin: 10px 8px 0px 6px;
   } 
   form {
   	padding: 24px 60px 10px 32px;
@@ -58,7 +61,7 @@
   .right .member{
   	font-size: x-small;
   	font-weight: bold;
-  	margin-left: 4px;
+  	margin-left: 5px;
   	margin-top: 20px;
   }
   .right .member a {
@@ -76,7 +79,7 @@
 	  		<h5>Anyone is welcome.....</h5>
 	  </div>
 	  <div class="right"> 
-                <form>
+                <form action="carInfo" method="POST">
                   <h2>Login</h2>
                   <div><i class="fa fa-user"></i><input class="box" type="text" name="id"></input></div>
                   <div><i class="fa fa-unlock"></i><input class="box" type="password" name="pw"></input></div>

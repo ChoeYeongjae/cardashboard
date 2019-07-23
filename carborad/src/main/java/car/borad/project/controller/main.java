@@ -32,9 +32,9 @@ public class main {
 	    public String chart() throws Exception{
 	        return "chart";
 	    }
-	    @RequestMapping("/carinfo")
+	    @RequestMapping("/carInfo")
 	    public String carinfo() throws Exception{
-	        return "carinfo";
+	        return "carInfo";
 	    }
 	    @RequestMapping("/loginfali")
 	    public String loginfali() throws Exception{
