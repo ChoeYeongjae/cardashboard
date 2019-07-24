@@ -151,6 +151,7 @@
                     <div class="user">
                        <i class="fa fa-user"></i>최영재님
                     </div>
+
                     <h2 class="txt_tit">User CarInfo</h2>
                 </div>
            </div>
