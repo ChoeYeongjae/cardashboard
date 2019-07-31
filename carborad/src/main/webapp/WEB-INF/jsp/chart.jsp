@@ -167,6 +167,7 @@
             		<ul>
             			<li><i class="fa fa-user"></i><a href="carInfo">Info</a></li>
             			<li><i class="fa fa-bar-chart"></i><a href="chart">Car Chart</a></li>
+            			<li><i class="fa fa-car"></i><a href="organize">Car organize reserve</a></li>
             		</ul>
             </div>
 	</div>

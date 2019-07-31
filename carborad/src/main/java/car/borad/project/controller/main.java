@@ -20,13 +20,9 @@ public class main {
 		@Autowired
 	    service service;
 	    // responesentity 테스트
-		@RequestMapping(value = "/user/", method = RequestMethod.GET)
+		@RequestMapping(value = "/user", method = RequestMethod.GET)
 	    public ResponseEntity<List<object>> listAllUsers() throws Exception {
 	        List<object> users = service.getAll();
-	        if (users.isEmpty()) {
-	            return new ResponseEntity(HttpStatus.NO_CONTENT);
-	            // You many decide to return HttpStatus.NOT_FOUND
-	        }
 	        return new ResponseEntity<List<object>>(users, HttpStatus.OK);
 	    }
 	    
@@ -58,6 +54,8 @@ public class main {
 	    public String carmember() throws Exception{
 	        return "carmember";
 	    }
-
-
+	    @RequestMapping("/organize")
+	    public String organize() throws Exception{
+	        return "organize";
+	    }
 }

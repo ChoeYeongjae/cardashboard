@@ -2,12 +2,16 @@
          pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <style>
 	html body {
 		margin: 0px !important;
@@ -141,6 +145,7 @@
             		<ul>
             			<li><i class="fa fa-user"></i><a href="carInfo">Info</a></li>
             			<li><i class="fa fa-bar-chart"></i><a href="chart">Car Chart</a></li>
+            			<li><i class="fa fa-car"></i><a href="organize">Car organize reserve</a></li>
             		</ul>
             </div>
 	</div>
@@ -149,7 +154,7 @@
             <div class="header">
                 <div class="inner">
                     <div class="user">
-                       <i class="fa fa-user"></i>최영재님
+                       <i class="fa fa-user" id="id"></i>님
                     </div>
 
                     <h2 class="txt_tit">User CarInfo</h2>
@@ -157,7 +162,7 @@
            </div>
 	       <div class="containers">
 	       		<div class="text">
-	       			<h2 class="model">2019 K3</h2>
+	       			<h2 class="model">2019<span id="model"></h2>
 	       			<button class="btn"><i class="fa fa-arrow-circle-o-up"></i></button>
 	       			<p class="borderTop"></p>
 	       			<p class="fuel">연비 : <font style="font-weight: bold">100000</font>km</p>
@@ -172,7 +177,28 @@
 	       		</div>
 	       </div>
 	       <p class="borderBt"></p>
+	       <div id="test"></div>
     </div>
    <div>
+   <script>
+   $(document).ready(function(){
+       $.ajax({
+           type : "GET",
+           url : "user",
+           dataType : "json",
+           error : function(){
+               alert('통신실패!!');
+           },
+           success : function(data,status){
+        	   console.log(data); 
+        	    $.each(data, function (i, item) {
+                    $('#id').append(item.name);
+                    $('#model').append(item.model);
+                })
+        	   },
+       })
+   });
+   
+   </script>
 </body>
 </html>
