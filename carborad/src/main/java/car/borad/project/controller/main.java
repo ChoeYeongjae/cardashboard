@@ -3,12 +3,14 @@ package car.borad.project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,6 +51,11 @@ public class main {
 	    @RequestMapping("/member")
 	    public String member() throws Exception{
 	        return "member";
+	    }
+	    @RequestMapping(value = "/memberInfo", method = RequestMethod.POST)
+	    public void memberlnfo(@RequestBody Object object) throws Exception{
+	    	service.postMember(object);
+	        
 	    }
 	    @RequestMapping("/carmember")
 	    public String carmember() throws Exception{

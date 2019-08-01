@@ -17,5 +17,8 @@ public class service {
 	    public List<object> getAll() throws Exception{
 	        return mapper.getAll();
 	    }
+	    public void postMember(Object object) throws Exception{
+	    	mapper.postMember(object);
+	    }
 
 }
