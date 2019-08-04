@@ -1,6 +1,11 @@
 package car.borad.project.controller;
 
+import java.util.ArrayList;
+import java.util.Base64.Encoder;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -12,13 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.apache.commons.codec.binary.Base64;
+
+
 
 import car.borad.project.vo.object;
 import car.borad.project.service.service;
 
 @Controller
 public class main {
+	
 		@Autowired
 	    service service;
 	    // responesentity 테스트
@@ -52,14 +62,40 @@ public class main {
 	    public String member() throws Exception{
 	        return "member";
 	    }
-	    @RequestMapping(value = "/memberInfo", method = RequestMethod.POST)
-	    public void memberlnfo(@RequestBody Object object) throws Exception{
-	    	service.postMember(object);
-	        
+	    @RequestMapping(value = "/carInfos", method = RequestMethod.POST)
+	    public void  carInfos(
+	    		@RequestParam(value = "model", required = false) String model,
+	    		@RequestParam(value = "engine", required = false) String engine,
+	    		@RequestParam(value = "file", required = false) String file
+	    		) throws Exception{
+	    	byte[] encoded = Base64.encodeBase64(file.getBytes());
+	    	System.out.print(new String(encoded));
+	    	//디코딩
+	    	//byte[] decoded = Base64.decodeBase64(encoded);
+	    	//System.out.print(new String(decoded));
+	    	service.postMember(model, engine, new String(encoded));
+	    }
+	    @RequestMapping(value = "/carmembers", method = RequestMethod.POST)
+	    public void  carmembers(
+	    		@RequestParam(value = "ids", required = false) String ids,
+	    		@RequestParam(value = "pw", required = false) String pw,
+	    		@RequestParam(value = "name", required = false) String name,
+	    		@RequestParam(value = "email", required = false) String email
+	    		) throws Exception{
+	    	service.postMembers(ids, pw, name ,email);
 	    }
 	    @RequestMapping("/carmember")
 	    public String carmember() throws Exception{
 	        return "carmember";
+	    }
+	    @RequestMapping(value = "/organizes", method = RequestMethod.POST)
+	    public void  organizes(
+	    		@RequestParam(value = "name", required = false) String name,
+	    		@RequestParam(value = "organize", required = false) String organize,
+	    		@RequestParam(value = "bookings", required = false) String bookings,
+	    		@RequestParam(value = "last", required = false) String last
+	    		) throws Exception{
+	    	service.postOrganizes(name, organize, bookings ,last);
 	    }
 	    @RequestMapping("/organize")
 	    public String organize() throws Exception{

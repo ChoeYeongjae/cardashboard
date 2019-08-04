@@ -1,8 +1,8 @@
 package car.borad.project.vo;
 
 public class object {
-	
 	private String id;
+	private String ids;
 	private String pw;
 	private String name;
 	
@@ -13,12 +13,19 @@ public class object {
 	private String engine;
 	private String event;
 	private String file;
-	
+
+		
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getDds() {
+		return ids;
+	}
+	public void setIds(String ids) {
+		this.ids = ids;
 	}
 	public String getPw() {
 		return pw;

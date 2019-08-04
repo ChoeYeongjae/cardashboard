@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style>
   body {
   	background-image: url("/resources/img/loginMain.png");
@@ -78,12 +79,12 @@
 </head>
 <body>
 	  <div class="right"> 
-                <form action="carmember" method="POST">
+                <form id="member">
                   <h2>Member Entry</h2>
                   <button class="idBtn">ID Check</button>
                   <div>
                   	<i class="fa fa-user"></i>
-                  	<input class="box" type="text" placeholder="id" name="id"></input>
+                  	<input class="box" type="text" placeholder="id" name="ids"></input>
                   </div>
                   <div>
                   	<i class="fa fa-unlock"></i>
@@ -100,5 +101,26 @@
                   <div><input class="submit" type="submit" value="Join"></input></div>   
                </form>
             </div>
+         <script>
+          $(document).ready(function() {
+           $(".submit").click(function(){
+		
+           var params = jQuery("#member").serialize();
+           console.log(params);
+           
+           $.ajax({
+               url: '/carmembers',
+               data: params,
+               type: 'POST',
+               success: function(result){
+                   alert("업로드 성공!!");
+               }
+           });
+    	   setTimeout(function() {
+    		   location.replace("carmember"); 
+			}, 0);
+   		});
+      });  
+   </script>   
 </body>
 </html>

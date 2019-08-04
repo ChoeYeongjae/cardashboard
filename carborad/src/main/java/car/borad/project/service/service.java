@@ -17,8 +17,14 @@ public class service {
 	    public List<object> getAll() throws Exception{
 	        return mapper.getAll();
 	    }
-	    public void postMember(Object object) throws Exception{
-	    	mapper.postMember(object);
-	    }
-
+		public void postMember(String model, String engine, String file) throws Exception {
+			 mapper.postMember(model, engine,file);
+		}
+		public void postMembers(String ids, String pw, String name , String email) throws Exception {
+			 mapper.postMembers(ids, pw, name,email);
+		}
+		public void postOrganizes(String name, String organize, String bookings, String last)  throws Exception {
+			 mapper.postOrganizes(name, organize, bookings,last);
+			
+		}
 }

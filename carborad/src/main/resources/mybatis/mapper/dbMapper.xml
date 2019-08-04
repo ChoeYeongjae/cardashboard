@@ -5,6 +5,12 @@
         SELECT id FROM user
     </select>
     <insert id="postMember" parameterType="car.borad.project.vo.object">
-        insert into carinfo(model, engine) values(#{model}, #{engine})  
+        insert into carinfo(model, engine, file) values(#{model}, #{engine}, #{file}) 
+    </insert>
+    <insert id="postMembers" parameterType="car.borad.project.vo.object">
+        insert into user(ids, pw, name,email) values(#{ids}, #{pw}, #{name}, #{email}) 
+    </insert>
+    <insert id="postOrganizes" parameterType="car.borad.project.vo.object">
+        insert into organize(name, organize, bookings,last) values(#{name}, #{organize}, #{bookings}, #{last}) 
     </insert>
 </mapper>
