@@ -13,8 +13,36 @@ public class object {
 	private String engine;
 	private String event;
 	private String file;
+	
+	private String names;
+	private String organize;
+	private String bookings;
+	private String last;
 
-		
+	public String getNames() {
+		return names;
+	}
+	public void setNames(String names) {
+		this.names = names;
+	}
+	public String getOrganize() {
+		return organize;
+	}
+	public void setOrganize(String organize) {
+		this.organize = organize;
+	}
+	public String getBookings() {
+		return bookings;
+	}
+	public void setBookings(String bookings) {
+		this.bookings = bookings;
+	}
+	public String getLast() {
+		return last;
+	}
+	public void setLast(String last) {
+		this.last = last;
+	}
 	public String getId() {
 		return id;
 	}

@@ -39,6 +39,7 @@
     .nav {
     	height: calc(100% - 112px);
     	box-sizing: border-box;
+    	padding: 16px 0px 0px 40px;
     }
     .nav ul {
     	list-style: none;
@@ -53,6 +54,7 @@
     }
     .txt_tit {
     	padding: 15px;
+    	margin-top: 15px;
     }
     .fa {
     	padding: 1px
@@ -87,7 +89,7 @@
     }
     .img {
     	position: absolute;
-    	margin-top: -21%;
+    	margin-top: -17%;
     	margin-left: 27%;
     	border: 1px solid gray;
     }
@@ -128,6 +130,76 @@
     .font {
     	font-weight: bold
     }
+    *{margin:0;padding:0;}
+    .layer{z-index:1;display:none;justify-content:center;align-items:center;background:rgba(0,0,0, 0.5);position:fixed;left:0;right:0;top:0;bottom:0;}
+    .layer .box{margin:1px;width:204px;background:#fff;position:relative;}
+    .layer .close{position:absolute;right:20px;bottom:20px;display:block;background:#09F;color:#fff;text-align:center;padding:5px 20px;font-size:13px;}
+    .layer:target{display:flex;animation:open 0.5s;}
+    @keyframes open {
+      from {opacity:0;} to {opacity:1;}
+    }
+  .text {
+  	margin-top:52px;
+  }
+  .right {
+  	width: 270px;
+    height: 302px;
+    border-radius: 8px;
+    background: #fff;
+    margin-top: -150px;
+    position: absolute;
+  }
+  form .submit {
+  	border: none;
+  	display: inline-block;
+    width: 226px;
+    border-radius: 4px;
+    background: #5e9dfd;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    color: #fff;
+    box-sizing: border-box;
+  	margin-top: 10px;
+  }
+  form .box {
+  	width: 187px;
+    margin-top: 7px;
+    padding: 0px 8px;
+    height: 24px;
+  }
+  form {
+  	padding: 41px 31px 2px 23px;
+  	margin-fop:10px;
+  }
+  .right .member{
+  	font-size: x-small;
+  	font-weight: bold;
+  	margin-left: 5px;
+  	margin-top: 20px;
+  }
+  .right .member a {
+  	text-decoration: none;
+  }
+  form .idBtn {
+  	position: absolute;
+    margin-left: 59%;
+    margin-top: -4%;
+    border-radius: 4px;
+    background: #5e9dfd;
+    font-size: 9px;
+    border: none;
+  	display: inline-block;
+  	color: #fff;
+  }
+  form p {
+  	margin: 0px !important;
+  }
+  .btn .fa {
+    color: #fff;
+    padding: 6px 15px 13px 13px;
+  }
 </style>
 </head>
 <body>
@@ -163,12 +235,39 @@
 	       <div class="containers">
 	       		<div class="text">
 	       			<h2 class="model">2019<span id="model"></h2>
-	       			<button class="btn"><i class="fa fa-arrow-circle-o-up"></i></button>
+	       			<div class="btn">
+	       				<a href="#popup" class="opener"><i class="fa fa-arrow-circle-o-up"></i></a>
+	       			</div>
+	       			<div id="popup" class="layer">
+   		 			  <div class="box">
+      					<div class="right"> 
+                	     <form id="member" action="carModal" method="POST">
+                	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
+                	        <div>
+                  			<input class="box" type="date" placeholder="date" name="time"></input>
+                  		   </div>
+                  		   <div>
+                  			<input class="box" type="text" placeholder="fuel" name="fuel"></input>
+                  		   </div>
+                  		   <div>
+                  	        <input class="box" type="text" placeholder="oiling" name="oiling"></input>
+                  		   </div>
+                  		   <div>
+                  	        <input class="box" type="text" placeholder="mileage" name="mileage"></input>
+                  		   </div>
+                  		   <div>
+                  			<input class="box" type="text" placeholder="event" name="event"></input>
+                  		   </div>
+                  			<div><input class="submit" type="submit" value="join"></input></div>   
+               			  </form>
+            			 </div>
+    					</div>
+  					</div>
+	       			<!-- <button class="btn"><i class="fa fa-arrow-circle-o-up"></i></button> -->
 	       			<p class="borderTop"></p>
 	       			<p class="fuel">연비 : <font style="font-weight: bold">100000</font>km</p>
 	       			<p class="txt">주유량 : 100000km</p>
 	       			<p class="txt">주행거리 : 100000km</p>
-	       			<p class="txt">엔진오일 : 100000km</p>
 	       			<p class="txt">사고 : 1번</p>
 	       		</div>
 	       		<div class="img">
@@ -194,9 +293,10 @@
         	    $.each(data, function (i, item) {
                     $('#id').append(item.name);
                     $('#model').append(item.model);
-                })
-        	   },
+             })
+           },
        })
+       
    });
    
    </script>

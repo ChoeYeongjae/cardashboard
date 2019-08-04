@@ -89,16 +89,26 @@ public class main {
 	        return "carmember";
 	    }
 	    @RequestMapping(value = "/organizes", method = RequestMethod.POST)
-	    public void  organizes(
-	    		@RequestParam(value = "name", required = false) String name,
+	    public void organizes(
+	    		@RequestParam(value = "names", required = false) String names,
 	    		@RequestParam(value = "organize", required = false) String organize,
 	    		@RequestParam(value = "bookings", required = false) String bookings,
 	    		@RequestParam(value = "last", required = false) String last
 	    		) throws Exception{
-	    	service.postOrganizes(name, organize, bookings ,last);
+	    	service.postOrganizes(names, organize, bookings ,last);
 	    }
 	    @RequestMapping("/organize")
 	    public String organize() throws Exception{
 	        return "organize";
+	    }
+	    @RequestMapping(value = "/carModal", method = RequestMethod.POST)
+	    public void carModal(
+	    		@RequestParam(value = "fuel", required = false) String fuel,
+	    		@RequestParam(value = "oiling", required = false) String oiling,
+	    		@RequestParam(value = "mileage", required = false) String mileage,
+	    		@RequestParam(value = "event", required = false) String event,
+	    		@RequestParam(value = "time", required = false) String time
+	    	  ) throws Exception{
+	    	service.postCarInfo(fuel, oiling, mileage ,event,time);
 	    }
 }

@@ -23,8 +23,10 @@ public class service {
 		public void postMembers(String ids, String pw, String name , String email) throws Exception {
 			 mapper.postMembers(ids, pw, name,email);
 		}
-		public void postOrganizes(String name, String organize, String bookings, String last)  throws Exception {
-			 mapper.postOrganizes(name, organize, bookings,last);
-			
+		public void postOrganizes(String names, String organize, String bookings, String last)  throws Exception {
+			 mapper.postOrganizes(names, organize, bookings,last);
+		}
+		public void postCarInfo(String fuel, String oiling, String mileage, String event, String time)  throws Exception {
+			 mapper.postCarInfo(fuel, oiling, mileage,event,time);
 		}
 }
