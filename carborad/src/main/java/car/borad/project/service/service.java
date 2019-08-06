@@ -17,6 +17,9 @@ public class service {
 	    public List<object> getAll() throws Exception{
 	        return mapper.getAll();
 	    }
+	    public void postLogin(String ids, String pw) throws Exception {
+			 mapper.postLogin(ids, pw);
+		}
 		public void postMember(String model, String engine, String file) throws Exception {
 			 mapper.postMember(model, engine,file);
 		}

@@ -54,6 +54,13 @@ public class main {
 	    public String carinfo() throws Exception{
 	        return "carInfo";
 	    }
+	    @RequestMapping(value = "/carInfos1", method = RequestMethod.POST)
+	    public void carInfos1(
+	    		@RequestParam(value = "ids", required = false) String ids,
+	    		@RequestParam(value = "pw", required = false) String pw
+	    	) throws Exception{
+	    	System.out.println(ids);
+	    }
 	    @RequestMapping("/loginfali")
 	    public String loginfali() throws Exception{
 	        return "loginfali";

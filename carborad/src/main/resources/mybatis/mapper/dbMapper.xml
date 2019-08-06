@@ -4,6 +4,9 @@
     <select id="getAll" resultType="car.borad.project.vo.object">
         SELECT * FROM user limit 1 
     </select>
+    <select id="postLogin" resultType="car.borad.project.vo.object">
+        SELECT * FROM user where ids = #{ids}
+    </select>
     <insert id="postMember" parameterType="car.borad.project.vo.object">
         insert into carinfo(model, engine, file) values(#{model}, #{engine}, #{file}) 
     </insert>
@@ -12,11 +15,5 @@
     </insert>
     <insert id="postOrganizes" parameterType="car.borad.project.vo.object">
         insert into organize(name, organize, bookings,last) values(#{names}, #{organize}, #{bookings}, #{last}) 
-    </insert>
-    <insert id="postCarInfo" parameterType="car.borad.project.vo.object">
-        insert into fuel(fuel,time) values(#{fuel},#{time}) 
-    	insert into oiling(oiling,time) values(#{oiling},#{time}) 
-    	insert into mileage(mileage,time) values(#{mileage},#{time}) 
-    	insert into event(event,time)values(#{event},#{time}) 
     </insert>
 </mapper>

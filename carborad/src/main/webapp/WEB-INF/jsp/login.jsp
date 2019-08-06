@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style>
   body {
   	background-image: url("/resources/img/loginMain.png");
@@ -79,13 +80,29 @@
 	  		<h5>Anyone is welcome.....</h5>
 	  </div>
 	  <div class="right"> 
-                <form action="carInfo" method="POST">
+                <form action="carInfos1" method="post" id="member">
                   <h2>Login</h2>
-                  <div><i class="fa fa-user"></i><input class="box" type="text" name="id"></input></div>
+                  <div><i class="fa fa-user"></i><input class="box" type="text" name="ids"></input></div>
                   <div><i class="fa fa-unlock"></i><input class="box" type="password" name="pw"></input></div>
                   <div><input class="submit" type="submit" value="login"></input></div>   
                   <p class="member">회원아닌 경우 <a href="member">"여기"</a>를 클릭해주세요.</p>
                 </form>
             </div>
+	 <script>
+          $(document).ready(function() {
+           $(".submit").click(function(){
+		
+           var params = jQuery("#member").serialize();
+           console.log(params);
+           
+           $.ajax({
+               url: '/carInfos1',
+               contentType: 'application/json',
+               data: params,
+               type: 'POST',
+           });
+   		});
+      });  
+   </script>   
 </body>
 </html>
