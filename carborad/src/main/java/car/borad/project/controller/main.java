@@ -60,6 +60,7 @@ public class main {
 	    		@RequestParam(value = "pw", required = false) String pw
 	    	) throws Exception{
 	    	System.out.println(ids);
+	    	System.out.println(pw);
 	    }
 	    @RequestMapping("/loginfali")
 	    public String loginfali() throws Exception{
