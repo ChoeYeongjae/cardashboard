@@ -80,29 +80,13 @@
 	  		<h5>Anyone is welcome.....</h5>
 	  </div>
 	  <div class="right"> 
-                <form action="carInfos1" method="post" id="member">
+                <form id="member" action="carInfos1" method="post">
                   <h2>Login</h2>
                   <div><i class="fa fa-user"></i><input class="box" type="text" name="ids"></input></div>
                   <div><i class="fa fa-unlock"></i><input class="box" type="password" name="pw"></input></div>
                   <div><input class="submit" type="submit" value="login"></input></div>   
                   <p class="member">회원아닌 경우 <a href="member">"여기"</a>를 클릭해주세요.</p>
                 </form>
-            </div>
-	 <script>
-          $(document).ready(function() {
-           $(".submit").click(function(){
-		
-           var params = jQuery("#member").serialize();
-           console.log(params);
-           
-           $.ajax({
-               url: '/carInfos1',
-               contentType: 'application/json',
-               data: params,
-               type: 'POST',
-           });
-   		});
-      });  
-   </script>   
+            </div>  
 </body>
 </html>

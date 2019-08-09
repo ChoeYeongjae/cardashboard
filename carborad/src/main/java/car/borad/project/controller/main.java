@@ -1,5 +1,6 @@
 package car.borad.project.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64.Encoder;
 import java.util.List;
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,8 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.apache.commons.codec.binary.Base64;
-
-
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder; 
 
 import car.borad.project.vo.object;
 import car.borad.project.service.service;
@@ -55,12 +59,22 @@ public class main {
 	        return "carInfo";
 	    }
 	    @RequestMapping(value = "/carInfos1", method = RequestMethod.POST)
-	    public void carInfos1(
-	    		@RequestParam(value = "ids", required = false) String ids,
-	    		@RequestParam(value = "pw", required = false) String pw
-	    	) throws Exception{
-	    	System.out.println(ids);
-	    	System.out.println(pw);
+	    public String login(
+	    		 object object
+	    		)throws Exception{
+	        try{
+	        	object login = service.postLogin(object);
+	        	boolean test = passEncoder.matches(object.getPw(), login.getPw());
+	        	System.out.println(test);
+	            if(login != null && test){
+	            	System.out.println("성공");
+	                return "carInfo";
+	            }else{
+	                return "member";
+	            }
+	        }catch(Exception e){
+	            return "member";
+	        }
 	    }
 	    @RequestMapping("/loginfali")
 	    public String loginfali() throws Exception{
@@ -83,14 +97,18 @@ public class main {
 	    	//System.out.print(new String(decoded));
 	    	service.postMember(model, engine, new String(encoded));
 	    }
+
+	    @Autowired
+	    BCryptPasswordEncoder passEncoder;
+
 	    @RequestMapping(value = "/carmembers", method = RequestMethod.POST)
 	    public void  carmembers(
-	    		@RequestParam(value = "ids", required = false) String ids,
-	    		@RequestParam(value = "pw", required = false) String pw,
-	    		@RequestParam(value = "name", required = false) String name,
-	    		@RequestParam(value = "email", required = false) String email
+	    		object object
 	    		) throws Exception{
-	    	service.postMembers(ids, pw, name ,email);
+	    	String inputPw = object.getPw();
+	    	String encodedPassword = passEncoder.encode(inputPw);
+	    	object.setPw(encodedPassword);
+	    	service.postMembers(object);
 	    }
 	    @RequestMapping("/carmember")
 	    public String carmember() throws Exception{

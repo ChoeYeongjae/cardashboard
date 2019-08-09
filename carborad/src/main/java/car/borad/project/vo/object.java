@@ -6,6 +6,7 @@ public class object {
 	private String pw;
 	private String name;
 	
+	private String email;
 	private String fuel;
 	private String oiling;
 	private String mileage;
@@ -24,6 +25,12 @@ public class object {
 	}
 	public void setNames(String names) {
 		this.names = names;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getOrganize() {
 		return organize;
@@ -49,7 +56,7 @@ public class object {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getDds() {
+	public String getIds() {
 		return ids;
 	}
 	public void setIds(String ids) {

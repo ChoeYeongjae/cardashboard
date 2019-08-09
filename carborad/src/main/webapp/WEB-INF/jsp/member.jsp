@@ -111,16 +111,27 @@
            $.ajax({
                url: '/carmembers',
                data: params,
-               type: 'POST',
-               success: function(result){
-                   alert("업로드 성공!!");
-               }
+               type: 'POST'
            });
     	   setTimeout(function() {
     		   location.replace("carmember"); 
 			}, 0);
    		});
-      });  
+      });
+         $(document).ready(function() {
+              $(".idBtn").click(function(){
+            	  
+            	  var value1 = $('input[name=ids]').val();
+            	  alert(value1);
+            	  var value2 = $('input[name=pw]').val();
+            	  alert(value2);
+            	  var regex=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{1,5}$/;
+            	  var value3 = $('input[name=email]').val();
+            	  alert(value3);
+            	  
+
+      		});
+         });
    </script>   
 </body>
 </html>

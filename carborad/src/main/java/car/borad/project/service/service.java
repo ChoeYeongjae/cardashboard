@@ -17,14 +17,17 @@ public class service {
 	    public List<object> getAll() throws Exception{
 	        return mapper.getAll();
 	    }
-	    public void postLogin(String ids, String pw) throws Exception {
-			 mapper.postLogin(ids, pw);
+	    public object postLogin(object object) throws Exception {
+			 return mapper.postLogin(object);
+		}
+	    public object getPws() throws Exception {
+	    	 return mapper.getPws();
 		}
 		public void postMember(String model, String engine, String file) throws Exception {
 			 mapper.postMember(model, engine,file);
 		}
-		public void postMembers(String ids, String pw, String name , String email) throws Exception {
-			 mapper.postMembers(ids, pw, name,email);
+		public void postMembers(object object) throws Exception {
+			 mapper.postMembers(object);
 		}
 		public void postOrganizes(String names, String organize, String bookings, String last)  throws Exception {
 			 mapper.postOrganizes(names, organize, bookings,last);
@@ -32,4 +35,5 @@ public class service {
 		public void postCarInfo(String fuel, String oiling, String mileage, String event, String time)  throws Exception {
 			 mapper.postCarInfo(fuel, oiling, mileage,event,time);
 		}
+		
 }
