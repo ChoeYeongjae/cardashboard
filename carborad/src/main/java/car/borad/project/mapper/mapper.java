@@ -11,5 +11,7 @@ public interface mapper {
 	public void postMembers(object object) throws Exception;
 	public void postOrganizes(String names, String organize, String bookings, String last) throws Exception;
 	public void postCarInfo(String fuel, String oiling, String mileage, String event ,String time) throws Exception;
-	public object getPws();	
+	public object getPws() throws Exception;
+	public String postDuplicate(object object) throws Exception;
+	public List<object> getDuplicate() throws Exception;	
 }

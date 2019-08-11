@@ -81,10 +81,9 @@
 	  <div class="right"> 
                 <form id="member">
                   <h2>Member Entry</h2>
-                  <button class="idBtn">ID Check</button>
                   <div>
                   	<i class="fa fa-user"></i>
-                  	<input class="box" type="text" placeholder="id" name="ids"></input>
+                  	<input id="ids" class="box" type="text" placeholder="id" name="ids"></input>
                   </div>
                   <div>
                   	<i class="fa fa-unlock"></i>
@@ -96,7 +95,7 @@
                   </div>
                   <div>
                   	<i class="fa fa-at"></i>
-                  	<input class="box" type="email" placeholder="email" name="email"></input>
+                  	<input class="box" type="text" placeholder="email" name="email"></input>
                   </div>
                   <div><input class="submit" type="submit" value="Join"></input></div>   
                </form>
@@ -104,34 +103,64 @@
          <script>
           $(document).ready(function() {
            $(".submit").click(function(){
-		
-           var params = jQuery("#member").serialize();
-           console.log(params);
-           
-           $.ajax({
-               url: '/carmembers',
-               data: params,
-               type: 'POST'
-           });
-    	   setTimeout(function() {
-    		   location.replace("carmember"); 
-			}, 0);
-   		});
-      });
-         $(document).ready(function() {
-              $(".idBtn").click(function(){
-            	  
-            	  var value1 = $('input[name=ids]').val();
-            	  alert(value1);
-            	  var value2 = $('input[name=pw]').val();
-            	  alert(value2);
-            	  var regex=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{1,5}$/;
-            	  var value3 = $('input[name=email]').val();
-            	  alert(value3);
-            	  
+        	   
+        	   $.ajax({
+        		   type : "GET",
+                   url : "duplicate",
+                   dataType : "json",
+                   success : function(data) {
+                	   
+                	   var idsValue = $('input[name=ids]').val();
+                	   var emaValue = $('input[name=email]').val();
+                	   
+                	   $.each(data, function (i, item) {
+                		   if(item.ids === idsValue){
+                			   alert("아이디 중복입니다.");
+                		   }else if(item.email === emaValue){
+                			   alert("이메일 중복입니다.");	
+                	       }else{
+                			   test();
+                	       }
+                    	})
+                   }
+               });
+				//	문자, 숫자, 특수문자를 혼합하여 6~15자 이내
+        	   var pw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
+        	   var email = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;	
+        	   var id = /^[a-z0-9_-]{3,16}$/;
 
-      		});
-         });
+        	   
+        	   var pwValue = $('input[name=pw]').val();
+        	   var emValue = $('input[name=email]').val();
+        	   var idsValue = $('input[name=ids]').val();
+        	   
+        	   
+        	   if(false === id.test(idsValue)) {
+        		   alert('아이디가 일치하지않습니다.');
+        	   }else if(false === pw.test(pwValue)){
+        		   alert('문자, 숫자, 특수문자를 혼합하여 6~15자 이내');
+        	   }else if(false === email.test(emValue)){
+        		   alert('이메일 주소가 유효하지 않습니다');
+        	   }
+        	   else{
+        		   alert("유효성 검사 완료!!!!!!!!!!!!!!!!");
+        	   }
+       		});
+      	  });
+    	 function test(){
+    	
+          var params = jQuery("#member").serialize();
+          console.log(params);
+          
+          $.ajax({
+              url: '/carmembers',
+              data: params,
+              type: 'POST'
+          });
+   	    	setTimeout(function() {
+   		   		location.replace("carmember"); 
+			}, 0);
+      	 } 
    </script>   
 </body>
 </html>

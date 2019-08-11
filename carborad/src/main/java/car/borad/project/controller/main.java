@@ -58,6 +58,11 @@ public class main {
 	    public String carinfo() throws Exception{
 	        return "carInfo";
 	    }
+	    @RequestMapping(value = "/duplicate", method = RequestMethod.GET)
+	    public ResponseEntity<List<object>> idsUsers() throws Exception {
+	        List<object> users = service.getDuplicate();
+	        return new ResponseEntity<List<object>>(users, HttpStatus.OK);
+	    }
 	    @RequestMapping(value = "/carInfos1", method = RequestMethod.POST)
 	    public String login(
 	    		 object object

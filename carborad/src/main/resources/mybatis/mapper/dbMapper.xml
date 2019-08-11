@@ -10,6 +10,9 @@
     <select id="postLogin" resultType="car.borad.project.vo.object">
         SELECT * FROM user where ids = #{ids} 
     </select>
+    <select id="getDuplicate" resultType="car.borad.project.vo.object">
+        SELECT ids ,email FROM user 
+    </select>
     <insert id="postMember" parameterType="car.borad.project.vo.object">
         insert into carinfo(model, engine, file) values(#{model}, #{engine}, #{file}) 
     </insert>

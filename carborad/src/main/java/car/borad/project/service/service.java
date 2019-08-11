@@ -17,6 +17,9 @@ public class service {
 	    public List<object> getAll() throws Exception{
 	        return mapper.getAll();
 	    }
+	    public List<object> getDuplicate() throws Exception{
+	        return mapper.getDuplicate();
+	    }
 	    public object postLogin(object object) throws Exception {
 			 return mapper.postLogin(object);
 		}
