@@ -13,8 +13,11 @@
     <select id="getDuplicate" resultType="car.borad.project.vo.object">
         SELECT ids ,email FROM user 
     </select>
+    <select id="getMemberDuplicate" resultType="car.borad.project.vo.object">
+        SELECT model FROM carinfo 
+    </select>
     <insert id="postMember" parameterType="car.borad.project.vo.object">
-        insert into carinfo(model, engine, file) values(#{model}, #{engine}, #{file}) 
+        insert into carinfo(ids, model, engine, file) values(#{ids},#{model}, #{engine}, #{file}) 
     </insert>
     <insert id="postMembers" parameterType="car.borad.project.vo.object">
         insert into user(ids, pw, name,email) values(#{ids}, #{pw}, #{name}, #{email}) 

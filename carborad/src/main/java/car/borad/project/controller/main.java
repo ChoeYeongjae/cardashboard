@@ -89,8 +89,14 @@ public class main {
 	    public String member() throws Exception{
 	        return "member";
 	    }
+	    @RequestMapping(value = "/memberDuplicate", method = RequestMethod.GET)
+	    public ResponseEntity<List<object>> memberDuplicate() throws Exception {
+	        List<object> member = service.getDuplicate();
+	        return new ResponseEntity<List<object>>(member, HttpStatus.OK);
+	    }
 	    @RequestMapping(value = "/carInfos", method = RequestMethod.POST)
-	    public void  carInfos(
+	    public void carInfos(
+	    		@RequestParam(value = "ids", required = false) String ids,
 	    		@RequestParam(value = "model", required = false) String model,
 	    		@RequestParam(value = "engine", required = false) String engine,
 	    		@RequestParam(value = "file", required = false) String file
@@ -100,7 +106,7 @@ public class main {
 	    	//디코딩
 	    	//byte[] decoded = Base64.decodeBase64(encoded);
 	    	//System.out.print(new String(decoded));
-	    	service.postMember(model, engine, new String(encoded));
+	    	service.postMember(model, engine, new String(encoded),ids);
 	    }
 
 	    @Autowired

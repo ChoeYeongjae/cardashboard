@@ -112,16 +112,17 @@
                 	   
                 	   var idsValue = $('input[name=ids]').val();
                 	   var emaValue = $('input[name=email]').val();
-                	   
+					   // DB상 값이 빈값일 경우 데이터를 비교를 하지못하기때문에 유효성 체크가안됨
                 	   $.each(data, function (i, item) {
                 		   if(item.ids === idsValue){
                 			   alert("아이디 중복입니다.");
                 		   }else if(item.email === emaValue){
                 			   alert("이메일 중복입니다.");	
-                	       }else{
-                			   test();
-                	       }
-                    	})
+                		   }else{
+                			   test();   
+                		   }
+                		})
+                		
                    }
                });
 				//	문자, 숫자, 특수문자를 혼합하여 6~15자 이내
@@ -148,19 +149,19 @@
        		});
       	  });
     	 function test(){
-    	
-          var params = jQuery("#member").serialize();
-          console.log(params);
-          
+    	 var params = jQuery("#member").serialize();
+    	 alert("test2");
           $.ajax({
-              url: '/carmembers',
+              url: 'carmembers',
               data: params,
               type: 'POST'
           });
-   	    	setTimeout(function() {
-   		   		location.replace("carmember"); 
-			}, 0);
-      	 } 
+          alert("test3");
+  			setTimeout(function() {
+   	    		location.replace("carmember"); 
+			}, 10);
+  			alert("test4");     
+      	 }
    </script>   
 </body>
 </html>

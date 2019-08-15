@@ -20,14 +20,17 @@ public class service {
 	    public List<object> getDuplicate() throws Exception{
 	        return mapper.getDuplicate();
 	    }
+	    public List<object> getMemberDuplicate() throws Exception{
+	        return mapper.getMemberDuplicate();
+	    }
 	    public object postLogin(object object) throws Exception {
 			 return mapper.postLogin(object);
 		}
 	    public object getPws() throws Exception {
 	    	 return mapper.getPws();
 		}
-		public void postMember(String model, String engine, String file) throws Exception {
-			 mapper.postMember(model, engine,file);
+		public void postMember(String model, String engine, String file, String ids) throws Exception {
+			 mapper.postMember(model, engine,file,ids);
 		}
 		public void postMembers(object object) throws Exception {
 			 mapper.postMembers(object);
