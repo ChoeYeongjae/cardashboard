@@ -89,7 +89,7 @@
     }
     .img {
     	position: absolute;
-    	margin-top: -17%;
+    	margin-top: -16.5%;
     	margin-left: 27%;
     	border: 1px solid gray;
     }
@@ -97,9 +97,9 @@
     	border-bottom: 1px solid #EAEAEA;
     	width: 86%;
     	margin-left: 16px;
-    	margin-top: 10%;
+    	margin-top: 13%;
     }
-    .btn {
+    .btn1 {
     	border: none;
     	background: #5e9dfd;
     	color: #fff;
@@ -108,8 +108,44 @@
     	font-size: unset;
     	border-radius: 4px;
     	position: absolute;
-    	right: 10%;
-    	top: 20%;
+    	left: 43%;
+    	top: 31%;
+    }
+     .btn2 {
+    	border: none;
+    	background: #5e9dfd;
+    	color: #fff;
+    	width: 40px;
+    	height: 30px;
+    	font-size: unset;
+    	border-radius: 4px;
+    	position: absolute;
+    	left: 43%;
+    	top: 41%;
+    }
+     .btn3 {
+    	border: none;
+    	background: #5e9dfd;
+    	color: #fff;
+    	width: 40px;
+    	height: 30px;
+    	font-size: unset;
+    	border-radius: 4px;
+    	position: absolute;
+    	left: 43%;
+    	top: 51%;
+    }
+    .btn4 {
+    	border: none;
+    	background: #5e9dfd;
+    	color: #fff;
+    	width: 40px;
+    	height: 30px;
+    	font-size: unset;
+    	border-radius: 4px;
+    	position: absolute;
+    	left: 43%;
+    	top: 61%;
     }
     .logo {
     	width: 122px;
@@ -143,13 +179,27 @@
   }
   .right {
   	width: 270px;
-    height: 302px;
+    height: 184px;
     border-radius: 8px;
     background: #fff;
-    margin-top: -150px;
+    margin-top: -130px;
     position: absolute;
   }
   form .submit {
+  	border: none;
+  	display: inline-block;
+    width: 226px;
+    border-radius: 4px;
+    background: #5e9dfd;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    color: #fff;
+    box-sizing: border-box;
+  	margin-top: 10px;
+  }
+   form #submit1 {
   	border: none;
   	display: inline-block;
     width: 226px;
@@ -170,7 +220,7 @@
     height: 24px;
   }
   form {
-  	padding: 41px 31px 2px 23px;
+  	padding: 21px 31px 2px 23px;
   	margin-fop:10px;
   }
   .right .member{
@@ -196,7 +246,19 @@
   form p {
   	margin: 0px !important;
   }
-  .btn .fa {
+  .btn1 .fa {
+    color: #fff;
+    padding: 6px 15px 13px 13px;
+  }
+  .btn2 .fa {
+    color: #fff;
+    padding: 6px 15px 13px 13px;
+  }
+  .btn3 .fa {
+    color: #fff;
+    padding: 6px 15px 13px 13px;
+  }
+  .btn4 .fa {
     color: #fff;
     padding: 6px 15px 13px 13px;
   }
@@ -235,40 +297,81 @@
 	       <div class="containers">
 	       		<div class="text">
 	       			<h2 class="model">2019<span id="model"></h2>
-	       			<div class="btn">
-	       				<a href="#popup" class="opener"><i class="fa fa-arrow-circle-o-up"></i></a>
-	       			</div>
-	       			<div id="popup" class="layer">
+	       			<div id="popup1" class="layer">
    		 			  <div class="box">
       					<div class="right"> 
                 	     <form id="member" action="carModal" method="POST">
                 	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
-                	        <div>
-                  			<input class="box" type="date" placeholder="date" name="time"></input>
-                  		   </div>
                   		   <div>
                   			<input class="box" type="text" placeholder="fuel" name="fuel"></input>
                   		   </div>
-                  		   <div>
-                  	        <input class="box" type="text" placeholder="oiling" name="oiling"></input>
-                  		   </div>
-                  		   <div>
-                  	        <input class="box" type="text" placeholder="mileage" name="mileage"></input>
-                  		   </div>
-                  		   <div>
-                  			<input class="box" type="text" placeholder="event" name="event"></input>
-                  		   </div>
-                  			<div><input class="submit" type="submit" value="join"></input></div>   
+                  			<div><input class="submit" type="submit" value="join"></input></div>
+                  			<div><input id="submit1"   type="button" value="Cancel" readonly></input></div>
                			  </form>
             			 </div>
     					</div>
   					</div>
+  					<div id="popup2" class="layer">
+   		 			  <div class="box">
+      					<div class="right"> 
+                	     <form id="member" action="carModal" method="POST">
+                	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
+                  		   <div>
+                  	        <input class="box" type="text" placeholder="oiling" name="oiling"></input>
+                  		   </div>
+                  			<div><input class="submit"  type="submit" value="join"></input></div>
+                  			<div><input id="submit1" 	type="button" value="Cancel" readonly></input></div>
+               			  </form>
+            			 </div>
+    					</div>
+  					</div>
+  					<div id="popup3" class="layer">
+   		 			  <div class="box">
+      					<div class="right"> 
+                	     <form id="member" action="carModal" method="POST">
+                	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
+                  		   <div>
+                  	        <input class="box" type="text" placeholder="mileage" name="mileage"></input>
+                  		   </div>
+                  			<div><input class="submit"  type="submit" value="join"></input></div>
+							<div><input id="submit1" 	type="button" value="Cancel" readonly></input></div>
+               			  </form>
+            			 </div>
+    					</div>
+  					</div>
+  					<div id="popup4" class="layer">
+   		 			  <div class="box">
+      					<div class="right"> 
+                	     <form id="member" action="carModal" method="POST">
+                	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
+                  		   <div>
+                  			<input class="box" type="text" placeholder="event" name="event"></input>
+                  		   </div>
+                  			<div><input class="submit"  type="submit" value="join"></input></div>
+                  			<div><input id="submit1" 	type="button" value="Cancel" readonly></input></div>
+               			  </form>
+            			 </div>
+    					</div>
+  					</div>
+  					
 	       			<!-- <button class="btn"><i class="fa fa-arrow-circle-o-up"></i></button> -->
 	       			<p class="borderTop"></p>
 	       			<p class="fuel">연비 : <font style="font-weight: bold">100000</font>km</p>
-	       			<p class="txt">주유량 : 100000km</p>
+	       			<div class="btn1">
+	       				<a href="#popup1" class="opener"><i class="fa fa-check"></i></a>
+	       			</div>
+	       			<p class="txt">주유량 : </p>
+	       			<div class="btn2">
+	       				<a href="#popup2" class="opener"><i class="fa fa-check"></i></a>
+	       			</div>
 	       			<p class="txt">주행거리 : 100000km</p>
+	       			<div class="btn3">
+	       				<a href="#popup3" class="opener"><i class="fa fa-check"></i></a>
+	       			</div>
 	       			<p class="txt">사고 : 1번</p>
+	       			<div class="btn4">
+	       				<a href="#popup4" class="opener"><i class="fa fa-check"></i></a>
+	       			</div>
 	       		</div>
 	       		<div class="img">
 	       			<!-- DB에 저장된 데이터 가져오기 -->
@@ -280,6 +383,13 @@
     </div>
    <div>
    <script>
+   $('#submit1').click(function(){
+	   alert("test");
+	   window.open('', '_self', '');
+	   window.close();
+	   return false;
+	 });
+
    $(document).ready(function(){
        $.ajax({
            type : "GET",

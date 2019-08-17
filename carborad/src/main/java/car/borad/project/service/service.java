@@ -29,8 +29,8 @@ public class service {
 	    public object getPws() throws Exception {
 	    	 return mapper.getPws();
 		}
-		public void postMember(String model, String engine, String file, String ids) throws Exception {
-			 mapper.postMember(model, engine,file,ids);
+		public void postMember(String model, String engine, String file) throws Exception {
+			 mapper.postMember(model, engine,file);
 		}
 		public void postMembers(object object) throws Exception {
 			 mapper.postMembers(object);
@@ -38,8 +38,8 @@ public class service {
 		public void postOrganizes(String names, String organize, String bookings, String last)  throws Exception {
 			 mapper.postOrganizes(names, organize, bookings,last);
 		}
-		public void postCarInfo(String fuel, String oiling, String mileage, String event, String time)  throws Exception {
-			 mapper.postCarInfo(fuel, oiling, mileage,event,time);
+		public void postCarInfo(String fuel, String oiling, String mileage, String event)  throws Exception {
+			 mapper.postCarInfo(fuel, oiling, mileage,event);
 		}
 		
 }

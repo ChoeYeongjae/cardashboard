@@ -112,24 +112,22 @@
                 	   
                 	   var idsValue = $('input[name=ids]').val();
                 	   var emaValue = $('input[name=email]').val();
-					   // DB상 값이 빈값일 경우 데이터를 비교를 하지못하기때문에 유효성 체크가안됨
+                	   
                 	   $.each(data, function (i, item) {
                 		   if(item.ids === idsValue){
                 			   alert("아이디 중복입니다.");
                 		   }else if(item.email === emaValue){
                 			   alert("이메일 중복입니다.");	
-                		   }else{
-                			   test();   
-                		   }
-                		})
-                		
+                	       }else {
+                	    	   test();
+                	       }
+                    	})
                    }
                });
 				//	문자, 숫자, 특수문자를 혼합하여 6~15자 이내
         	   var pw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
         	   var email = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;	
         	   var id = /^[a-z0-9_-]{3,16}$/;
-
         	   
         	   var pwValue = $('input[name=pw]').val();
         	   var emValue = $('input[name=email]').val();
@@ -149,19 +147,19 @@
        		});
       	  });
     	 function test(){
-    	 var params = jQuery("#member").serialize();
-    	 alert("test2");
+    	
+          var params = jQuery("#member").serialize();
+          console.log(params);
+          
           $.ajax({
-              url: 'carmembers',
+              url: '/carmembers',
               data: params,
               type: 'POST'
-          });
-          alert("test3");
-  			setTimeout(function() {
-   	    		location.replace("carmember"); 
-			}, 10);
-  			alert("test4");     
-      	 }
+          })
+   	    	setTimeout(function() {
+   		   		location.replace("carmember"); 
+			}, 0);
+      	 } 
    </script>   
 </body>
 </html>

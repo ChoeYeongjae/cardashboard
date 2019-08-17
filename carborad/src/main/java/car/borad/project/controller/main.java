@@ -96,7 +96,6 @@ public class main {
 	    }
 	    @RequestMapping(value = "/carInfos", method = RequestMethod.POST)
 	    public void carInfos(
-	    		@RequestParam(value = "ids", required = false) String ids,
 	    		@RequestParam(value = "model", required = false) String model,
 	    		@RequestParam(value = "engine", required = false) String engine,
 	    		@RequestParam(value = "file", required = false) String file
@@ -106,7 +105,7 @@ public class main {
 	    	//디코딩
 	    	//byte[] decoded = Base64.decodeBase64(encoded);
 	    	//System.out.print(new String(decoded));
-	    	service.postMember(model, engine, new String(encoded),ids);
+	    	service.postMember(model, engine, new String(encoded));
 	    }
 
 	    @Autowired
@@ -143,9 +142,8 @@ public class main {
 	    		@RequestParam(value = "fuel", required = false) String fuel,
 	    		@RequestParam(value = "oiling", required = false) String oiling,
 	    		@RequestParam(value = "mileage", required = false) String mileage,
-	    		@RequestParam(value = "event", required = false) String event,
-	    		@RequestParam(value = "time", required = false) String time
+	    		@RequestParam(value = "event", required = false) String event
 	    	  ) throws Exception{
-	    	service.postCarInfo(fuel, oiling, mileage ,event,time);
+	    	service.postCarInfo(fuel, oiling, mileage ,event);
 	    }
 }
