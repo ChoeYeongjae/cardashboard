@@ -1,28 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="car.borad.project.mapper.mapper">
-    <select id="getAll" resultType="car.borad.project.vo.object">
+    <select id="getAll" resultType="car.borad.project.vo.Account">
         SELECT * FROM user limit 1 
     </select>
-    <select id="getPws" resultType="car.borad.project.vo.object">
+    <select id="getPws" resultType="car.borad.project.vo.Account">
         select * from user 
     </select>
-    <select id="postLogin" resultType="car.borad.project.vo.object">
+    <select id="postLogin" resultType="car.borad.project.vo.Account">
         SELECT * FROM user where ids = #{ids} 
     </select>
-    <select id="getDuplicate" resultType="car.borad.project.vo.object">
+    <select id="getDuplicate" resultType="car.borad.project.vo.Account">
         SELECT ids ,email FROM user 
     </select>
-    <select id="getMemberDuplicate" resultType="car.borad.project.vo.object">
+    <select id="getMemberDuplicate" resultType="car.borad.project.vo.CarInfo">
         SELECT model FROM carinfo 
     </select>
-    <insert id="postMember" parameterType="car.borad.project.vo.object">
+    <insert id="postMember" parameterType="car.borad.project.vo.CarInfo">
         insert into carinfo(model, engine, file) values(#{model}, #{engine}, #{file}) 
     </insert>
-    <insert id="postMembers" parameterType="car.borad.project.vo.object">
-        insert into user(ids, pw, name,email) values(#{ids}, #{pw}, #{name}, #{email}) 
+    <insert id="postMembers" parameterType="car.borad.project.vo.Account">
+        insert into user(ids, pw, name,email) values(#{ids}, #{pw}, #{name}, #{email})
     </insert>
-    <insert id="postOrganizes" parameterType="car.borad.project.vo.object">
+    <insert id="postOrganizes" parameterType="car.borad.project.vo.Organize">
         insert into organize(name, organize, bookings,last) values(#{names}, #{organize}, #{bookings}, #{last}) 
     </insert>
+    
+    <!-- 차량 정보 -->
+    
+    <insert id="postCarFuel" parameterType="car.borad.project.vo.CarInfo">
+        insert into fuel(fuel) values(#{fuel}) 
+    </insert>
+    
+    <insert id="postCarOiling" parameterType="car.borad.project.vo.CarInfo">
+        insert into oiling(oiling) values(#{oiling}) 
+    </insert>
+    
+    <insert id="postCarMileage" parameterType="car.borad.project.vo.CarInfo">
+        insert into mileage(mileage) values(#{mileage}) 
+    </insert>
+    
+    <insert id="postCarEvent" parameterType="car.borad.project.vo.CarInfo">
+        insert into event(event) values(#{event}) 
+    </insert>
+    
+    
 </mapper>

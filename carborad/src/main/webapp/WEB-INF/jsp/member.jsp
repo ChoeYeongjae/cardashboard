@@ -147,7 +147,7 @@
        		});
       	  });
     	 function test(){
-    	
+
           var params = jQuery("#member").serialize();
           console.log(params);
           
@@ -156,6 +156,7 @@
               data: params,
               type: 'POST'
           })
+
    	    	setTimeout(function() {
    		   		location.replace("carmember"); 
 			}, 0);

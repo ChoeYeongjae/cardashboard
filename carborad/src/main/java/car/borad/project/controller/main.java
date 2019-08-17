@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.Base64.Encoder;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -25,9 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder; 
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import car.borad.project.vo.object;
+import car.borad.project.vo.Account;
 import car.borad.project.service.service;
 
 @Controller
@@ -37,9 +34,9 @@ public class main {
 	    service service;
 	    // responesentity 테스트
 		@RequestMapping(value = "/user", method = RequestMethod.GET)
-	    public ResponseEntity<List<object>> listAllUsers() throws Exception {
-	        List<object> users = service.getAll();
-	        return new ResponseEntity<List<object>>(users, HttpStatus.OK);
+	    public ResponseEntity<List<Account>> listAllUsers() throws Exception {
+	        List<Account> users = service.getAll();
+	        return new ResponseEntity<List<Account>>(users, HttpStatus.OK);
 	    }
 	    
 	    @RequestMapping("/")
@@ -59,16 +56,16 @@ public class main {
 	        return "carInfo";
 	    }
 	    @RequestMapping(value = "/duplicate", method = RequestMethod.GET)
-	    public ResponseEntity<List<object>> idsUsers() throws Exception {
-	        List<object> users = service.getDuplicate();
-	        return new ResponseEntity<List<object>>(users, HttpStatus.OK);
+	    public ResponseEntity<List<Account>> idsUsers() throws Exception {
+	        List<Account> users = service.getDuplicate();
+	        return new ResponseEntity<List<Account>>(users, HttpStatus.OK);
 	    }
 	    @RequestMapping(value = "/carInfos1", method = RequestMethod.POST)
 	    public String login(
-	    		 object object
+	    		Account object
 	    		)throws Exception{
 	        try{
-	        	object login = service.postLogin(object);
+	        	Account login = service.postLogin(object);
 	        	boolean test = passEncoder.matches(object.getPw(), login.getPw());
 	        	System.out.println(test);
 	            if(login != null && test){
@@ -90,9 +87,9 @@ public class main {
 	        return "member";
 	    }
 	    @RequestMapping(value = "/memberDuplicate", method = RequestMethod.GET)
-	    public ResponseEntity<List<object>> memberDuplicate() throws Exception {
-	        List<object> member = service.getDuplicate();
-	        return new ResponseEntity<List<object>>(member, HttpStatus.OK);
+	    public ResponseEntity<List<Account>> memberDuplicate() throws Exception {
+	        List<Account> member = service.getDuplicate();
+	        return new ResponseEntity<List<Account>>(member, HttpStatus.OK);
 	    }
 	    @RequestMapping(value = "/carInfos", method = RequestMethod.POST)
 	    public void carInfos(
@@ -113,7 +110,7 @@ public class main {
 
 	    @RequestMapping(value = "/carmembers", method = RequestMethod.POST)
 	    public void  carmembers(
-	    		object object
+	    		Account object
 	    		) throws Exception{
 	    	String inputPw = object.getPw();
 	    	String encodedPassword = passEncoder.encode(inputPw);
@@ -137,13 +134,29 @@ public class main {
 	    public String organize() throws Exception{
 	        return "organize";
 	    }
-	    @RequestMapping(value = "/carModal", method = RequestMethod.POST)
-	    public void carModal(
-	    		@RequestParam(value = "fuel", required = false) String fuel,
-	    		@RequestParam(value = "oiling", required = false) String oiling,
-	    		@RequestParam(value = "mileage", required = false) String mileage,
+	    @RequestMapping(value = "/carFuel", method = RequestMethod.POST)
+	    public void carFuel(
+	    		@RequestParam(value = "fuel", required = false) String fuel
+	    	  ) throws Exception{
+	    	service.postCarFuel(fuel);
+	    }
+	    @RequestMapping(value = "/carOiling", method = RequestMethod.POST)
+	    public void carOiling(
+	    		@RequestParam(value = "oiling", required = false) String oiling
+	    	  ) throws Exception{
+	    	service.postCarOiling(oiling);
+	    }
+	    @RequestMapping(value = "/carMileage", method = RequestMethod.POST)
+	    public void carMileage(
+	    		@RequestParam(value = "mileage", required = false) String mileage
+	    		
+	    	  ) throws Exception{
+	    	service.postCarMileage(mileage);
+	    }
+	    @RequestMapping(value = "/carEvent", method = RequestMethod.POST)
+	    public void carEvent(
 	    		@RequestParam(value = "event", required = false) String event
 	    	  ) throws Exception{
-	    	service.postCarInfo(fuel, oiling, mileage ,event);
+	    	service.postCarEvent(event);
 	    }
 }

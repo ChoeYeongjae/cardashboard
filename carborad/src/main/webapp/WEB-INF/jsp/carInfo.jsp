@@ -199,7 +199,7 @@
     box-sizing: border-box;
   	margin-top: 10px;
   }
-   form #submit1 {
+   form a {
   	border: none;
   	display: inline-block;
     width: 226px;
@@ -212,6 +212,7 @@
     color: #fff;
     box-sizing: border-box;
   	margin-top: 10px;
+  	text-decoration: none;
   }
   form .box {
   	width: 187px;
@@ -230,6 +231,33 @@
   	margin-top: 20px;
   }
   .right .member a {
+  	text-decoration: none;
+  }
+  .right .member1{
+  	font-size: x-small;
+  	font-weight: bold;
+  	margin-left: 5px;
+  	margin-top: 20px;
+  }
+  .right .member1 a {
+  	text-decoration: none;
+  }
+  .right .member2{
+  	font-size: x-small;
+  	font-weight: bold;
+  	margin-left: 5px;
+  	margin-top: 20px;
+  }
+  .right .member2 a {
+  	text-decoration: none;
+  }
+  .right .member3{
+  	font-size: x-small;
+  	font-weight: bold;
+  	margin-left: 5px;
+  	margin-top: 20px;
+  }
+  .right .member3 a {
   	text-decoration: none;
   }
   form .idBtn {
@@ -300,13 +328,13 @@
 	       			<div id="popup1" class="layer">
    		 			  <div class="box">
       					<div class="right"> 
-                	     <form id="member" action="carModal" method="POST">
+                	     <form id="member">
                 	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
                   		   <div>
                   			<input class="box" type="text" placeholder="fuel" name="fuel"></input>
                   		   </div>
-                  			<div><input class="submit" type="submit" value="join"></input></div>
-                  			<div><input id="submit1"   type="button" value="Cancel" readonly></input></div>
+                  			<div><input id="subFuel" class="submit" type="submit" value="join"></input></div>
+                  			<div><a href="#" onclick="javascript:self.close();">닫기</a></div>
                			  </form>
             			 </div>
     					</div>
@@ -314,13 +342,13 @@
   					<div id="popup2" class="layer">
    		 			  <div class="box">
       					<div class="right"> 
-                	     <form id="member" action="carModal" method="POST">
+                	     <form id="member1">
                 	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
                   		   <div>
                   	        <input class="box" type="text" placeholder="oiling" name="oiling"></input>
                   		   </div>
-                  			<div><input class="submit"  type="submit" value="join"></input></div>
-                  			<div><input id="submit1" 	type="button" value="Cancel" readonly></input></div>
+                  			<div><input class="submit" id="subOiling" type="submit" value="join"></input></div>
+                  			<div><a href="#" onclick="javascript:self.close();">닫기</a></div>
                			  </form>
             			 </div>
     					</div>
@@ -328,13 +356,13 @@
   					<div id="popup3" class="layer">
    		 			  <div class="box">
       					<div class="right"> 
-                	     <form id="member" action="carModal" method="POST">
+                	     <form id="member2">
                 	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
                   		   <div>
                   	        <input class="box" type="text" placeholder="mileage" name="mileage"></input>
                   		   </div>
-                  			<div><input class="submit"  type="submit" value="join"></input></div>
-							<div><input id="submit1" 	type="button" value="Cancel" readonly></input></div>
+                  			<div><input class="submit" id="subMileage" type="submit" value="join"></input></div>
+							<div><a href="#" onclick="javascript:self.close();">닫기</a></div>
                			  </form>
             			 </div>
     					</div>
@@ -342,13 +370,13 @@
   					<div id="popup4" class="layer">
    		 			  <div class="box">
       					<div class="right"> 
-                	     <form id="member" action="carModal" method="POST">
+                	     <form id="member3">
                 	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
                   		   <div>
                   			<input class="box" type="text" placeholder="event" name="event"></input>
                   		   </div>
-                  			<div><input class="submit"  type="submit" value="join"></input></div>
-                  			<div><input id="submit1" 	type="button" value="Cancel" readonly></input></div>
+                  			<div><input class="submit" id="subEvent" type="submit" value="join"></input></div>
+                  			<div><a href="#" onclick="javascript:self.close();">닫기</a></div>
                			  </form>
             			 </div>
     					</div>
@@ -383,12 +411,7 @@
     </div>
    <div>
    <script>
-   $('#submit1').click(function(){
-	   alert("test");
-	   window.open('', '_self', '');
-	   window.close();
-	   return false;
-	 });
+
 
    $(document).ready(function(){
        $.ajax({
@@ -407,6 +430,65 @@
            },
        })
        
+       $("#subFuel").click(function(){
+      	 
+    	   var params = jQuery("#member").serialize();
+           console.log(params);
+           
+           $.ajax({
+               url: '/carFuel',
+               data: params,
+               type: 'POST'
+           })
+    	    	setTimeout(function() {
+    		   		location.replace("carInfo"); 
+ 			}, 0);  
+		});
+       
+       $("#subOiling").click(function(){
+        	 
+    	   var params = jQuery("#member1").serialize();
+           alert(params);
+           
+           $.ajax({
+               url: '/carOiling',
+               data: params,
+               type: 'POST'
+           })
+    	    	setTimeout(function() {
+    		   		location.replace("carInfo"); 
+ 			}, 0);  
+		});
+       
+       $("#subMileage").click(function(){
+      	 
+    	   var params = jQuery("#member2").serialize();
+           console.log(params);
+           
+           $.ajax({
+               url: '/carMileage',
+               data: params,
+               type: 'POST'
+           })
+    	    	setTimeout(function() {
+    		   		location.replace("carInfo"); 
+ 			}, 0);  
+		});
+       
+       $("#subEvent").click(function(){
+      	 
+    	   var params = jQuery("#member3").serialize();
+           alert(params);
+           
+           $.ajax({
+               url: '/carEvent',
+               data: params,
+               type: 'POST'
+           })
+    	    	setTimeout(function() {
+    		   		location.replace("carInfo"); 
+ 			}, 0);  
+		});
    });
    
    </script>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  
 import car.borad.project.mapper.mapper;
+import car.borad.project.vo.Account;
 import car.borad.project.vo.object;
 
 
@@ -14,32 +15,42 @@ public class service {
 	 	@Autowired
 	    mapper mapper;
 	    
-	    public List<object> getAll() throws Exception{
+	    public List<Account> getAll() throws Exception{
 	        return mapper.getAll();
 	    }
-	    public List<object> getDuplicate() throws Exception{
+	    public List<Account> getDuplicate() throws Exception{
 	        return mapper.getDuplicate();
 	    }
-	    public List<object> getMemberDuplicate() throws Exception{
+	    public List<Account> getMemberDuplicate() throws Exception{
 	        return mapper.getMemberDuplicate();
 	    }
-	    public object postLogin(object object) throws Exception {
+	    public Account postLogin(Account object) throws Exception {
 			 return mapper.postLogin(object);
 		}
-	    public object getPws() throws Exception {
+	    public Account getPws() throws Exception {
 	    	 return mapper.getPws();
 		}
 		public void postMember(String model, String engine, String file) throws Exception {
 			 mapper.postMember(model, engine,file);
 		}
-		public void postMembers(object object) throws Exception {
+		public void postMembers(Account object) throws Exception {
 			 mapper.postMembers(object);
 		}
 		public void postOrganizes(String names, String organize, String bookings, String last)  throws Exception {
 			 mapper.postOrganizes(names, organize, bookings,last);
 		}
-		public void postCarInfo(String fuel, String oiling, String mileage, String event)  throws Exception {
-			 mapper.postCarInfo(fuel, oiling, mileage,event);
+		
+		public void postCarFuel(String fuel)  throws Exception {
+			 mapper.postCarFuel(fuel);
+		}
+		public void postCarOiling(String oiling)  throws Exception {
+			 mapper.postCarOiling(oiling);
+		}
+		public void postCarMileage(String mileage)  throws Exception {
+			 mapper.postCarMileage(mileage);
+		}
+		public void postCarEvent(String event)  throws Exception {
+			 mapper.postCarEvent(event);
 		}
 		
 }
