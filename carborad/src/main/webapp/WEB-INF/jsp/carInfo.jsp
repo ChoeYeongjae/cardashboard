@@ -331,6 +331,7 @@
                 	     <form id="member">
                 	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
                   		   <div>
+                  		    <input type="hidden" id="ids1" name="ids"></input>
                   			<input class="box" type="text" placeholder="fuel" name="fuel"></input>
                   		   </div>
                   			<div><input id="subFuel" class="submit" type="submit" value="join"></input></div>
@@ -426,7 +427,8 @@
         	    $.each(data, function (i, item) {
                     $('#id').append(item.name);
                     $('#model').append(item.model);
-             })
+                    $('#ids1').val(item.ids);
+        	    })
            },
        })
        

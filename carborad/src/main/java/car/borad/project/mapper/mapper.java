@@ -15,7 +15,7 @@ public interface mapper {
 	public List<Account> getDuplicate() throws Exception;	
 	public List<Account> getMemberDuplicate() throws Exception;	
 	
-	public void postCarFuel(String fuel) throws Exception;
+	public void postCarFuel(String fuel,String ids) throws Exception;
 	public void postCarOiling(String oiling) throws Exception;
 	public void postCarMileage(String mileage) throws Exception;
 	public void postCarEvent(String event) throws Exception;

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
  
 import car.borad.project.mapper.mapper;
 import car.borad.project.vo.Account;
-import car.borad.project.vo.object;
 
 
 @Service
@@ -40,8 +39,8 @@ public class service {
 			 mapper.postOrganizes(names, organize, bookings,last);
 		}
 		
-		public void postCarFuel(String fuel)  throws Exception {
-			 mapper.postCarFuel(fuel);
+		public void postCarFuel(String fuel , String ids)  throws Exception {
+			 mapper.postCarFuel(fuel, ids);
 		}
 		public void postCarOiling(String oiling)  throws Exception {
 			 mapper.postCarOiling(oiling);

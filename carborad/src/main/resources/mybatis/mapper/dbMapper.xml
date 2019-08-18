@@ -29,7 +29,7 @@
     <!-- 차량 정보 -->
     
     <insert id="postCarFuel" parameterType="car.borad.project.vo.CarInfo">
-        insert into fuel(fuel) values(#{fuel}) 
+        insert into fuel(fuel,ids) values(#{fuel},#{ids}) 
     </insert>
     
     <insert id="postCarOiling" parameterType="car.borad.project.vo.CarInfo">

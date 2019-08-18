@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Base64.Encoder;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -38,7 +40,7 @@ public class main {
 	        List<Account> users = service.getAll();
 	        return new ResponseEntity<List<Account>>(users, HttpStatus.OK);
 	    }
-	    
+				
 	    @RequestMapping("/")
 	    public String login() throws Exception{
 	        return "login";
@@ -136,9 +138,10 @@ public class main {
 	    }
 	    @RequestMapping(value = "/carFuel", method = RequestMethod.POST)
 	    public void carFuel(
-	    		@RequestParam(value = "fuel", required = false) String fuel
+	    		@RequestParam(value = "fuel", required = false) String fuel,
+	    		@RequestParam(value = "ids", required = false) String ids
 	    	  ) throws Exception{
-	    	service.postCarFuel(fuel);
+	    	service.postCarFuel(fuel,ids);
 	    }
 	    @RequestMapping(value = "/carOiling", method = RequestMethod.POST)
 	    public void carOiling(
