@@ -17,10 +17,10 @@
         SELECT model FROM carinfo 
     </select>
     <insert id="postMember" parameterType="car.borad.project.vo.CarInfo">
-        insert into carinfo(model, engine, file) values(#{model}, #{engine}, #{file}) 
+        insert into carinfo(ids,model, engine, file) values(#{ids},#{model}, #{engine}, #{file}) 
     </insert>
     <insert id="postMembers" parameterType="car.borad.project.vo.Account">
-        insert into user(ids, pw, name,email) values(#{ids}, #{pw}, #{name}, #{email})
+        insert into user(ids,pw, name,email) values(#{ids}, #{pw}, #{name}, #{email})
     </insert>
     <insert id="postOrganizes" parameterType="car.borad.project.vo.Organize">
         insert into organize(name, organize, bookings,last) values(#{names}, #{organize}, #{bookings}, #{last}) 
@@ -33,16 +33,29 @@
     </insert>
     
     <insert id="postCarOiling" parameterType="car.borad.project.vo.CarInfo">
-        insert into oiling(oiling) values(#{oiling}) 
+        insert into oiling(oiling,ids) values(#{oiling},#{ids}) 
     </insert>
     
     <insert id="postCarMileage" parameterType="car.borad.project.vo.CarInfo">
-        insert into mileage(mileage) values(#{mileage}) 
+        insert into mileage(mileage,ids) values(#{mileage},#{ids}) 
     </insert>
     
     <insert id="postCarEvent" parameterType="car.borad.project.vo.CarInfo">
-        insert into event(event) values(#{event}) 
+        insert into event(event,ids) values(#{event},#{ids}) 
     </insert>
     
+    <!-- 차량 정보 -->
+    
+    <select id="getCarInfo" resultType="car.borad.project.vo.CarInfo">
+    
+    SELECT A.ids, B.`event`,C.fuel,D.mileage,E.oiling,F.name , A.model
+		FROM carinfo as A
+		INNER JOIN test.`event`   as B ON A.ids = B.ids
+		INNER JOIN test.`fuel`    as C ON B.ids = C.ids
+		INNER JOIN test.`mileage` as D ON C.ids = D.ids
+		INNER JOIN test.`oiling`  as E ON D.ids = E.ids
+		INNER JOIN test.`user`    as F ON E.ids = F.ids
+		
+	</select>
     
 </mapper>

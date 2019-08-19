@@ -27,6 +27,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import car.borad.project.vo.Account;
+import car.borad.project.vo.CarInfo;
 import car.borad.project.service.service;
 
 @Controller
@@ -39,6 +40,12 @@ public class main {
 	    public ResponseEntity<List<Account>> listAllUsers() throws Exception {
 	        List<Account> users = service.getAll();
 	        return new ResponseEntity<List<Account>>(users, HttpStatus.OK);
+	    }
+		
+		@RequestMapping(value = "/carInfos1", method = RequestMethod.GET)
+	    public ResponseEntity<List<CarInfo>> carInfoIF() throws Exception {
+	        List<CarInfo> info = service.getCarInfo();
+	        return new ResponseEntity<List<CarInfo>>(info, HttpStatus.OK);
 	    }
 				
 	    @RequestMapping("/")
@@ -95,6 +102,7 @@ public class main {
 	    }
 	    @RequestMapping(value = "/carInfos", method = RequestMethod.POST)
 	    public void carInfos(
+	    		@RequestParam(value = "ids", required = false) String ids,
 	    		@RequestParam(value = "model", required = false) String model,
 	    		@RequestParam(value = "engine", required = false) String engine,
 	    		@RequestParam(value = "file", required = false) String file
@@ -104,7 +112,7 @@ public class main {
 	    	//디코딩
 	    	//byte[] decoded = Base64.decodeBase64(encoded);
 	    	//System.out.print(new String(decoded));
-	    	service.postMember(model, engine, new String(encoded));
+	    	service.postMember(ids,model, engine, new String(encoded));
 	    }
 
 	    @Autowired
@@ -145,21 +153,23 @@ public class main {
 	    }
 	    @RequestMapping(value = "/carOiling", method = RequestMethod.POST)
 	    public void carOiling(
-	    		@RequestParam(value = "oiling", required = false) String oiling
+	    		@RequestParam(value = "oiling", required = false) String oiling,
+	    		@RequestParam(value = "ids", required = false) String ids
 	    	  ) throws Exception{
-	    	service.postCarOiling(oiling);
+	    	service.postCarOiling(oiling,ids);
 	    }
 	    @RequestMapping(value = "/carMileage", method = RequestMethod.POST)
 	    public void carMileage(
-	    		@RequestParam(value = "mileage", required = false) String mileage
-	    		
+	    		@RequestParam(value = "mileage", required = false) String mileage,
+	    		@RequestParam(value = "ids", required = false) String ids
 	    	  ) throws Exception{
-	    	service.postCarMileage(mileage);
+	    	service.postCarMileage(mileage,ids);
 	    }
 	    @RequestMapping(value = "/carEvent", method = RequestMethod.POST)
 	    public void carEvent(
-	    		@RequestParam(value = "event", required = false) String event
-	    	  ) throws Exception{
-	    	service.postCarEvent(event);
+	    		@RequestParam(value = "event", required = false) String event,
+	    		@RequestParam(value = "ids", required = false) String ids
+	    		) throws Exception{
+	    	service.postCarEvent(event,ids);
 	    }
 }

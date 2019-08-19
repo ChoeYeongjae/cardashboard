@@ -346,6 +346,7 @@
                 	     <form id="member1">
                 	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
                   		   <div>
+	                  		<input type="hidden" id="ids2" name="ids"></input>
                   	        <input class="box" type="text" placeholder="oiling" name="oiling"></input>
                   		   </div>
                   			<div><input class="submit" id="subOiling" type="submit" value="join"></input></div>
@@ -360,6 +361,7 @@
                 	     <form id="member2">
                 	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
                   		   <div>
+                  		    <input type="hidden" id="ids3" name="ids"></input>
                   	        <input class="box" type="text" placeholder="mileage" name="mileage"></input>
                   		   </div>
                   			<div><input class="submit" id="subMileage" type="submit" value="join"></input></div>
@@ -374,6 +376,7 @@
                 	     <form id="member3">
                 	        <h3 style="text-align: center; margin-bottom:10px;">Car Info</h3>
                   		   <div>
+                  		   	<input type="hidden" id="ids4" name="ids"></input>
                   			<input class="box" type="text" placeholder="event" name="event"></input>
                   		   </div>
                   			<div><input class="submit" id="subEvent" type="submit" value="join"></input></div>
@@ -422,12 +425,33 @@
            error : function(){
                alert('통신실패!!');
            },
-           success : function(data,status){
-        	   console.log(data); 
+           success : function(data,status){ 
         	    $.each(data, function (i, item) {
                     $('#id').append(item.name);
-                    $('#model').append(item.model);
                     $('#ids1').val(item.ids);
+                    $('#ids2').val(item.ids);
+                    $('#ids3').val(item.ids);
+                    $('#ids4').val(item.ids);
+        	    })
+           },
+       })
+        $.ajax({
+           type : "GET",
+           url : "carInfos1",
+           dataType : "json",
+           error : function(){
+               alert('통신실패!!');
+           },
+           success : function(data,status){ 
+        	    $.each(data, function (i, item) {
+                    console.log(item.ids);
+                    console.log(item.event);
+                    console.log(item.fuel);
+                    console.log(item.mileage);
+                    console.log(item.oiling);
+                    console.log(item.name);
+                    console.log(item.model);
+                    
         	    })
            },
        })
