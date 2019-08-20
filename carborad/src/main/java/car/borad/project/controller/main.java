@@ -36,13 +36,18 @@ public class main {
 		@Autowired
 	    service service;
 	    // responesentity 테스트
-		@RequestMapping(value = "/user", method = RequestMethod.GET)
+		@RequestMapping(value = "/users", method = RequestMethod.GET)
 	    public ResponseEntity<List<Account>> listAllUsers() throws Exception {
+	        List<Account> users = service.getAlls();
+	        return new ResponseEntity<List<Account>>(users, HttpStatus.OK);
+	    }
+		@RequestMapping(value = "/user", method = RequestMethod.GET)
+	    public ResponseEntity<List<Account>> listAllUser() throws Exception {
 	        List<Account> users = service.getAll();
 	        return new ResponseEntity<List<Account>>(users, HttpStatus.OK);
 	    }
 		
-		@RequestMapping(value = "/carInfos1", method = RequestMethod.GET)
+		@RequestMapping(value = "/carInfos2", method = RequestMethod.GET)
 	    public ResponseEntity<List<CarInfo>> carInfoIF() throws Exception {
 	        List<CarInfo> info = service.getCarInfo();
 	        return new ResponseEntity<List<CarInfo>>(info, HttpStatus.OK);
@@ -76,8 +81,8 @@ public class main {
 	        try{
 	        	Account login = service.postLogin(object);
 	        	boolean test = passEncoder.matches(object.getPw(), login.getPw());
-	        	System.out.println(test);
-	            if(login != null && test){
+	        	
+	        	if(login != null && test){
 	            	System.out.println("성공");
 	                return "carInfo";
 	            }else{

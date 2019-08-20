@@ -18,6 +18,9 @@ public class service {
 	    public List<Account> getAll() throws Exception{
 	        return mapper.getAll();
 	    }
+	    public List<Account> getAlls() throws Exception{
+	        return mapper.getAlls();
+	    }
 	    public List<Account> getDuplicate() throws Exception{
 	        return mapper.getDuplicate();
 	    }

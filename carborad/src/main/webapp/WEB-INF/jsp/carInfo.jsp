@@ -418,26 +418,9 @@
 
 
    $(document).ready(function(){
-       $.ajax({
-           type : "GET",
-           url : "user",
-           dataType : "json",
-           error : function(){
-               alert('통신실패!!');
-           },
-           success : function(data,status){ 
-        	    $.each(data, function (i, item) {
-                    $('#id').append(item.name);
-                    $('#ids1').val(item.ids);
-                    $('#ids2').val(item.ids);
-                    $('#ids3').val(item.ids);
-                    $('#ids4').val(item.ids);
-        	    })
-           },
-       })
         $.ajax({
            type : "GET",
-           url : "carInfos1",
+           url : "carInfos2",
            dataType : "json",
            error : function(){
                alert('통신실패!!');
@@ -455,7 +438,22 @@
         	    })
            },
        })
-       
+       $.ajax({
+           type : "GET",
+           url : "user",
+           dataType : "json",
+           error : function(){
+               alert('통신실패!!');
+           },
+           success : function(data,status){ 
+        	    $.each(data, function (i, item) {
+                    $('#ids1').val(item.ids);
+                    $('#ids2').val(item.ids);
+                    $('#ids3').val(item.ids);
+                    $('#ids4').val(item.ids);
+        	    })
+           },
+       })
        $("#subFuel").click(function(){
       	 
     	   var params = jQuery("#member").serialize();

@@ -7,6 +7,7 @@ import car.borad.project.vo.CarInfo;
 
 public interface mapper {
 	public List<Account> getAll() throws Exception;
+	public List<Account> getAlls() throws Exception;
 	public Account postLogin(Account object) throws Exception;
 	public void postMember(String ids, String model, String engine, String file) throws Exception;
 	public void postMembers(Account object) throws Exception;
