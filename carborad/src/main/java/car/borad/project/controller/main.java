@@ -50,6 +50,11 @@ public class main {
 		@RequestMapping(value = "/carInfos2", method = RequestMethod.GET)
 	    public ResponseEntity<List<CarInfo>> carInfoIF() throws Exception {
 	        List<CarInfo> info = service.getCarInfo();
+	        System.out.print(info.get(0).getFile());
+	        String encoded = info.get(0).getFile();
+	        byte[] decoded = Base64.decodeBase64(encoded);
+	        System.out.print(new String(decoded));
+	        
 	        return new ResponseEntity<List<CarInfo>>(info, HttpStatus.OK);
 	    }
 				

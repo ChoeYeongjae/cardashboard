@@ -54,7 +54,7 @@
     
     <select id="getCarInfo" resultType="car.borad.project.vo.CarInfo">
     
-    SELECT A.ids, B.`event`,C.fuel,D.mileage,E.oiling,F.name , A.model
+       SELECT A.ids, A.file , B.`event`,C.fuel,D.mileage,E.oiling,F.name , A.model
 		FROM carinfo as A
 		INNER JOIN test.`event`   as B ON A.ids = B.ids
 		INNER JOIN test.`fuel`    as C ON B.ids = C.ids

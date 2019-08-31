@@ -316,7 +316,7 @@
             <div class="header">
                 <div class="inner">
                     <div class="user">
-                       <i class="fa fa-user" id="id"></i>님
+                       <i class="fa fa-user" id="id"></i>&nbsp;님
                     </div>
 
                     <h2 class="txt_tit">User CarInfo</h2>
@@ -324,7 +324,7 @@
            </div>
 	       <div class="containers">
 	       		<div class="text">
-	       			<h2 class="model">2019<span id="model"></h2>
+	       			<h2 class="model">2019&nbsp;<span id="model"></h2>
 	       			<div id="popup1" class="layer">
    		 			  <div class="box">
       					<div class="right"> 
@@ -388,19 +388,19 @@
   					
 	       			<!-- <button class="btn"><i class="fa fa-arrow-circle-o-up"></i></button> -->
 	       			<p class="borderTop"></p>
-	       			<p class="fuel">연비 : <font style="font-weight: bold">100000</font>km</p>
+	       			<p class="fuel">연비 : <font style="font-weight: bold" id="fuel"></font>&nbsp;km</p>
 	       			<div class="btn1">
 	       				<a href="#popup1" class="opener"><i class="fa fa-check"></i></a>
 	       			</div>
-	       			<p class="txt">주유량 : </p>
+	       			<p class="txt">주유량 : <font id="oiling"></font>&nbsp;m</p>
 	       			<div class="btn2">
 	       				<a href="#popup2" class="opener"><i class="fa fa-check"></i></a>
 	       			</div>
-	       			<p class="txt">주행거리 : 100000km</p>
+	       			<p class="txt">주행거리 : <font id="mileage"></font>&nbsp;km</p>
 	       			<div class="btn3">
 	       				<a href="#popup3" class="opener"><i class="fa fa-check"></i></a>
 	       			</div>
-	       			<p class="txt">사고 : 1번</p>
+	       			<p class="txt">사고 : <font id="event"></font>&nbsp;번</p>
 	       			<div class="btn4">
 	       				<a href="#popup4" class="opener"><i class="fa fa-check"></i></a>
 	       			</div>
@@ -434,7 +434,13 @@
                     console.log(item.oiling);
                     console.log(item.name);
                     console.log(item.model);
-                    
+                    $('#id').html(item.ids);
+                    $('#model').html(item.model);
+                    $('#fuel').html(item.fuel);
+                    $('#oiling').html(item.oiling);
+                    $('#mileage').html(item.mileage);
+                    $('#event').html(item.event);
+                    alert(item.file);
         	    })
            },
        })
